@@ -1,0 +1,34 @@
+.car-year-make-model {
+  border-bottom: 1px solid #d1d5da;
+  background-color: #f6f8fa;
+}
+
+.car-year-make-model-header {
+  margin:0;
+}
+
+.coverage-summary {
+  border-bottom: 1px solid #d1d5da;
+}
+
+.edit-coverage-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9AD1D3;
+  font-weight: bold;
+}
+
+.box {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.tall-box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+}

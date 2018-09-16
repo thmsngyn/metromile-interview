@@ -1,0 +1,28 @@
+<div>
+  <div class="box car-year-make-model">
+    <h3 class="car-year-make-model-header">2008 Ford Explorer</h3>
+  </div>
+
+  <div class="box coverage-summary">
+    <table
+      style="width: 100%;">
+      <tr
+        *ngFor="let limits of coverageLimits; let i = index">
+        <div
+          [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
+          <td style="width: 100%">
+            Comprehensive Deductible
+          </td>
+          <td style="font-weight: bold;">
+            $250
+          </td>
+        </div>
+
+      </tr>
+    </table>
+  </div>
+
+  <div class="tall-box edit-coverage-button">
+    <button type="button" name="button">EDIT COVERAGE</button>
+  </div>
+</div>

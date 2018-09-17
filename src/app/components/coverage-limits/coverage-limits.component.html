@@ -7,15 +7,17 @@
     <table
       style="width: 100%;">
       <tr
-        *ngFor="let limits of coverageLimits; let i = index">
+        *ngFor="let limit of coverageLimits; let i = index">
         <div
           [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
+
           <td style="width: 100%">
-            Comprehensive Deductible
+            {{ limit.title }}
           </td>
           <td style="font-weight: bold;">
-            $250
+            {{ limit.options[limit.optionChoice].name }}
           </td>
+
         </div>
 
       </tr>

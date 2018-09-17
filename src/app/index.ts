@@ -1,3 +1,4 @@
+import { QuestionableBooleanPipe } from './shared/pipes/questionable-boolean.pipe';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
@@ -16,7 +17,8 @@ import {CoverageLimitsComponent} from './components/coverage-limits/coverage-lim
   declarations: [
     RootComponent,
     AppComponent,
-    CoverageLimitsComponent
+    CoverageLimitsComponent,
+    QuestionableBooleanPipe
   ],
   bootstrap: [RootComponent]
 })

@@ -1,0 +1,24 @@
+.coverage-summary {
+  border-bottom: 1px solid #d1d5da;
+}
+
+.save-coverage-button {
+  color: white;
+  background-color: #42C7CE;
+  font-weight: bold;
+  height: 40px;
+  width: 170px;
+  cursor: pointer;
+}
+
+.cancel-coverage-button {
+  color: #42C7CE;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}

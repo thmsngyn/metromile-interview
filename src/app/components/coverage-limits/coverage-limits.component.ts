@@ -1,18 +1,25 @@
+import { CoverageLimitsService } from './../../shared/services/coverage-limits/coverage-limits.service';
 import { Vehicle } from './../../shared/services/vehicles/vehicles.model';
 import {Component, Input, Output, EventEmitter, ViewEncapsulation, OnInit} from '@angular/core';
 import { CoverageLimit, CoverageOption } from '../../shared/services/coverage-limits/coverage-limits.model';
+import { OutputEmitter } from '@angular/compiler/src/output/abstract_emitter';
 
 @Component({
   selector: 'coverage-limits',
   template: require('./coverage-limits.component.html'),
-  styleUrls: ['app/components/coverage-limits/coverage-limits.component.css']
+  styleUrls: ['app/shared/styles.css', 'app/components/coverage-limits/coverage-limits.component.css']
 })
 export class CoverageLimitsComponent implements OnInit {
   vehicle: Vehicle = null;
-  coverageLimits: CoverageLimit[] = [];
+  private coverageLimits: CoverageLimit[] = [];
+  editMode: boolean = false;
+
+  private selectedOptions = {};
+
+  constructor(public coverageService: CoverageLimitsService) {}
 
   ngOnInit() {
-    this.vehicle = require('../../shared/services/vehicles/vehicles.json');
+    this.vehicle = require('../../shared/services/vehicles/vehicle.json');
 
     var coveragesJson = require('../../shared/services/coverage-limits/coverages.json');
     for (let coverage of coveragesJson.coverageOptions) {
@@ -20,22 +27,24 @@ export class CoverageLimitsComponent implements OnInit {
         new CoverageLimit(coverage)
       )
     }
+
+    this.selectedOptions = this.coverageService.getOptions();
+    this.coverageService.optionsSaved.subscribe(
+      data => {
+        this.selectedOptions = data;
+        this.editMode = false;
+        this.coverageService.announceEditModeChange(this.editMode);
+      }
+    );
   }
-  // @Input() todo: any;
-  // @Output() onDestroy: EventEmitter<any> = new EventEmitter(false);
-  // @Output() onSave: EventEmitter<any> = new EventEmitter(false);
-  // @Output() onChange: EventEmitter<any> = new EventEmitter(false);
-  // editing: boolean = false;
-  //
-  // handleChange() {
-  //   this.onChange.emit(this.todo.id);
-  // }
-  //
-  // handleDoubleClick() {
-  //   this.editing = true;
-  // }
-  //
-  // handleClick() {
-  //   this.onDestroy.emit(this.todo.id);
-  // }
+
+  editCoverages() {
+    this.editMode = !this.editMode;
+    this.coverageService.announceEditModeChange(this.editMode);
+  }
+
+  setClickedOption(option, index) {
+    this.selectedOptions[option] = index;
+    this.coverageService.announceOptionsChange(this.selectedOptions);
+  }
 }

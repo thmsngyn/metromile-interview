@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './containers/App';
+import { CoverageChangesComponent } from './components/coverage-changes/coverage-changes.component';
 
 @Component({
   selector: 'fountain-root',

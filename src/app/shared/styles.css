@@ -1,0 +1,30 @@
+.box {
+  border-top: 1px solid #d1d5da;
+  border-right: 1px solid #d1d5da;
+  border-bottom: 1px solid #d1d5da;
+  border-left: 1px solid #d1d5da;
+  width: 520px;
+}
+
+.tile-header {
+  border-bottom: 1px solid #d1d5da;
+  background-color: #f6f8fa;
+}
+
+.tile-header-name {
+  margin: 0;
+}
+
+.section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.tall-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+}

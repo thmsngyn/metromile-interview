@@ -1,30 +1,71 @@
-<div>
-  <div class="box car-year-make-model">
-    <h3 class="car-year-make-model-header">{{ vehicle.name }}</h3>
+<div class="box" style="width: 450px;">
+  <div class="section tile-header">
+    <h3 class="tile-header-name">{{ vehicle.name }}</h3>
   </div>
 
-  <div class="box coverage-summary">
-    <table
-      style="width: 100%;">
-      <tr
-        *ngFor="let limit of coverageLimits; let i = index">
-        <div
-          [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
+  <div *ngIf="!editMode">
+    <div class="section coverage-summary">
+      <table
+        style="width: 100%;">
+        <tr
+          *ngFor="let limit of coverageLimits; let i = index">
+          <div
+            [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
 
-          <td style="width: 100%">
-            {{ limit.title }}
-          </td>
-          <td style="font-weight: bold;">
-            {{ limit.options[limit.optionChoice].name }}
-          </td>
+            <td style="width: 100%">
+              {{ limit.title }}
+            </td>
+            <td style="font-weight: bold; white-space: nowrap;">
+              {{ limit.options[selectedOptions[limit.name]].name }}
+            </td>
 
-        </div>
+          </div>
 
-      </tr>
-    </table>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tall-section edit-coverage-button">
+      <button
+        style="cursor: pointer;"
+        type="button"
+        name="button"
+        (click)="editCoverages()">
+        EDIT COVERAGE</button>
+    </div>
   </div>
 
-  <div class="tall-box edit-coverage-button">
-    <button type="button" name="button">EDIT COVERAGE</button>
+  <div *ngIf="editMode">
+    <div class="tall-section coverage-options">
+      <table
+        style="width: 100%;">
+        <tr
+          *ngFor="let limit of coverageLimits; let i = index">
+          <div
+            [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
+
+            <div>
+              {{ limit.title }}
+              <div class="flex-grid">
+                <td
+                  class="flex-col"
+                  style="cursor: pointer;"
+                  *ngFor="let option of limit.options; let i = index"
+                  [ngStyle]="{ 'border-left': i === 0 ? '1px solid #d1d5da' : '' }"
+                  (click)="setClickedOption(limit.name, i)"
+                  [class.active]="i == selectedOptions[limit.name]">
+                    {{ option.name.toUpperCase() }}
+                </td>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </tr>
+      </table>
+    </div>
   </div>
+
 </div>

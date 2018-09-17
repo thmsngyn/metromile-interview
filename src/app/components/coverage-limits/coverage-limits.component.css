@@ -1,13 +1,8 @@
-.car-year-make-model {
-  border-bottom: 1px solid #d1d5da;
-  background-color: #f6f8fa;
-}
-
-.car-year-make-model-header {
-  margin:0;
-}
-
 .coverage-summary {
+  border-bottom: 1px solid #d1d5da;
+}
+
+.coverage-options {
   border-bottom: 1px solid #d1d5da;
 }
 
@@ -15,20 +10,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #9AD1D3;
+  color: #42C7CE;
   font-weight: bold;
 }
 
-.box {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 15px;
-  padding-left: 15px;
+.flex-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
-.tall-box {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 15px;
-  padding-left: 15px;
+.flex-col {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #d1d5da;
+  border-right: 1px solid #d1d5da;
+  border-bottom: 1px solid #d1d5da;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: 200;
+}
+
+td.flex-col.active {
+  background-color:#42C7CE !important;
+  color: white;
 }

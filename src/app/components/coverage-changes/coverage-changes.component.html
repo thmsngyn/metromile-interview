@@ -1,0 +1,47 @@
+<div *ngIf="editMode" class="box" style="width: 450px;">
+  <div class="section tile-header">
+    <h3 class="tile-header-name">Coverage Changes</h3>
+  </div>
+
+  <div class="section coverage-summary">
+    <table
+      style="width: 100%;">
+
+      <tr>
+        <td *ngIf="isUnchanged()" >
+          No changes
+        </td>
+      </tr>
+
+      <tr
+        *ngFor="let limit of coverageLimits; let i = index">
+        <div
+          *ngIf="limit.options[selectedOptions[limit.name]].name !== limit.options[newOptions[limit.name]].name"
+          [ngStyle]="{ 'padding-top': i != 0 ? '10px' : '0px' }">
+
+          <td style="width: 100%">
+            {{ limit.title }}
+          </td>
+          <td style="font-weight: bold; white-space: nowrap;">
+            {{ limit.options[selectedOptions[limit.name]].name }} --> {{ limit.options[newOptions[limit.name]].name }}
+          </td>
+
+        </div>
+
+      </tr>
+    </table>
+  </div>
+
+  <div>
+
+  <div class="section">
+    <div class="button-container">
+      <button class="save-coverage-button" type="button" name="button" (click)="saveChanges(newOptions)">SAVE CHANGES</button>
+    </div>
+
+    <div class="button-container">
+      <button class="cancel-coverage-button" type="button" name="button" (click)="saveChanges(selectedOptions)">CANCEL CHANGES</button>
+    </div>
+  </div>
+
+</div>

@@ -1,3 +1,4 @@
+import { Vehicle } from './../../shared/services/vehicles/vehicles.model';
 import {Component, Input, Output, EventEmitter, ViewEncapsulation, OnInit} from '@angular/core';
 import { CoverageLimit, CoverageOption } from '../../shared/services/coverage-limits/coverage-limits.model';
 
@@ -7,9 +8,12 @@ import { CoverageLimit, CoverageOption } from '../../shared/services/coverage-li
   styleUrls: ['app/components/coverage-limits/coverage-limits.component.css']
 })
 export class CoverageLimitsComponent implements OnInit {
+  vehicle: Vehicle = null;
   coverageLimits: CoverageLimit[] = [];
 
   ngOnInit() {
+    this.vehicle = require('../../shared/services/vehicles/vehicles.json');
+
     var coveragesJson = require('../../shared/services/coverage-limits/coverages.json');
     for (let coverage of coveragesJson.coverageOptions) {
       this.coverageLimits.push(
